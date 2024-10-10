@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
+const contactUsRoutes = require('./routes/contactUs');
 
 dotenv.config();
 
@@ -22,7 +23,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Simple route for testing
 app.get('/', (req, res) => {
-    res.send('Duomo Admin Portal Backend');
+    res.send('The server is healthy');
 });
 
 // Start server
@@ -33,3 +34,6 @@ app.listen(PORT, () => {
 
 // Auth Routes
 app.use('/api/auth', authRoutes);
+// API Endpoint
+app.use('/api/contact', contactUsRoutes);
+
